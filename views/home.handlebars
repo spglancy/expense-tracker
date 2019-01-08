@@ -1,0 +1,20 @@
+        <div class="homeContainer">
+            <div class="nav">{{>nav}}</div>
+            <div class="friends">
+                {{#each friend}}
+                {{/each}}
+            </div>
+            <div class="feed">
+                {{#each post}}
+                {{> post}}
+                {{/each}}
+            </div>
+            <!-- <div class="other">
+                {{#each thing}}
+                {{/each}}
+            </div> -->
+            <div class="topics">
+                {{#each topic}}
+                {{/each}}
+            </div>
+        </div>
