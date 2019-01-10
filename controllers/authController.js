@@ -6,12 +6,15 @@ const bcrypt = require('bcryptjs');
 const config = require('../config');
 const cookieParser = require('cookie-parser');
 
-
 /**
  * Renders Signup template
  */
 router.get('/signup', (req, res) => {
-  res.render('signup');
+    const x = req.nToken;
+    if(x){
+        res.redirect(`/home/${x._id}`)
+    }
+    res.render('signup');
 })
 
 /**
@@ -31,7 +34,7 @@ router.post('/register', (req, res) => {
   user.save().then((user) => {
       var token = jwt.sign({ _id: user._id }, process.env.SECRET, { expiresIn: "60 days" });
       res.cookie('nToken', token, { maxAge: 900000, httpOnly: true });
-      res.redirect('/feed');
+      res.redirect(`/home/${user._id}`);
   });
   });
 
@@ -62,7 +65,7 @@ router.post("/login", (req, res) => {
         });
         // Set a cookie and redirect to root
         res.cookie("nToken", token, { maxAge: 900000, httpOnly: true });
-        res.redirect("/feed");
+        res.redirect(`/home/${user._id}`);
       });
     })
     .catch(err => {

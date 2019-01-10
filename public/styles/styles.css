@@ -1,11 +1,19 @@
-body, html {
+body, html{
     height: 100%;
     width: 100%;
     margin: 0;
     padding: 0;
     overflow: hidden;
+    display: flex;
 }
 
+form {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
 /* nav styling */
 nav {
     grid-area: n;
@@ -57,14 +65,6 @@ li > form > input {
     margin: 5px 0 0 0;
 }
 
-.avatar {
-    width: 44px;
-    height: 44px;
-    border-radius: 100%;
-    margin: 3px 0 0 0;
-    padding: 0;
-}
-
 li img:hover {
     cursor: pointer;
 }
@@ -89,9 +89,11 @@ li .userActions:hover {
     width: 100%;
     height: 100%;
     grid-template-areas: 'n n n'
-                         'f m t';
-    grid-template-columns: 1fr 2fr 1fr;
-    grid-template-rows: 55px 1fr;
+                         't t b'
+                         'a a a'
+                         'e e e';
+    grid-template-columns: 1fr 3fr 3fr;
+    grid-template-rows: 55px 1fr 50px 1fr;
     grid-gap: 5px;
 }
 
@@ -99,133 +101,65 @@ li .userActions:hover {
     grid-area: n;
 }
 
-.friends {
-    grid-area: f;
+.totals {
+    grid-area: t;
     border: 1px solid black;
 }
 
-.feed {
-    grid-area: m;
-    border: 1px solid black;
+.expenses {
+    grid-area: e;
     display: flex;
     justify-content: flex-start;
+    align-items: center;
     flex-direction: column-reverse;
     overflow-y: scroll;
     padding: 10px;
 }
 
-/* .other {
-grid-area: o;
-border: 1px solid black;
-} */
+.inputs {
+    height: 30px;
+    font-size: 18px;
+}
 
-.topics {
-    grid-area: t;
+.submit {
+    width: 75px;
+    height: 35px;
+    border-radius: 10px;
+}
+
+.budget {
+    grid-area: b;
     border: 1px solid black;
 }
 
-/*
-*
-*
-Start New-post view styling
-*
-*
-*/
-
-.postForm {
-    display: grid;
-    height: 100%;
+.expense-container {
     width: 100%;
-    grid-gap: 5px;
-    grid-template-columns: 1fr 3fr 2fr;
-    grid-template-rows: 50px 2fr 1fr;
-    grid-template-areas: 'n n n'
-        'f p p'
-        'f p p';
-}
-
-/* friends, nav already defined */
-
-.content {
+    height: 60px;
     border: 1px solid black;
-    grid-area: c;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    padding: 10px;
-}
-
-.content img {
-    width: 240px;
-    height: 250px;
-    margin: 0;
-    padding: 0;
-}
-
-.content figcaption {
-
-}
-
-.content > input {
-    width: 85%;
-    height: 5%;
+    justify-content: center;
 }
 
 .description {
-    border: 1px solid black;
-    grid-area: d;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
+    width: 50%;
 }
 
-.topicSelection {
-    border: 1px solid black;
-    grid-area: t;
-    display: flex;
-    justify-content: space-between;
+.addExpense {
+    grid-area: a;
+
 }
 
-.postForm > form {
-    height: 100%;
-    grid-area: p;
-    display: grid;
-    grid-gap: 5px;
-    grid-template-columns: 4fr 5fr;
-    grid-template-rows: 2fr 1fr;
-    grid-template-areas: 'c d'
-        't t';
-}
-
-/*FEED*/
-
-/*POST PARTIAL*/
-.post-container {
-    border: 1px black solid;
-    margin: 20px 5px;
-    flex-direction: column;
-    justify-content: center;
-    height: min-content;
-    padding: 10px;
-}
-
-.post-container > a {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
-}
-
-.post-container  .post-content {
+.newExpense {
+    width: 98%;
     align-self: center;
-    height: 450px;
-    width: 450px;
-}
-
-.post-description {
+    height: 55px;
+    font-size: 18px;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 3px;
+    display: flex;
+    justify-content: space-around;
+    margin: auto;
 }
 
 .registerContainer {

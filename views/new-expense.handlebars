@@ -1,7 +1,7 @@
 <!--
 
 <div class="upload-form-container">
-  <form class="upload-form" action='/posts' method='post' enctype="multipart/form-data">
+  <form class="upload-form" action='/expenses' method='expense' enctype="multipart/form-data">
     <div class="upload-form-div-name">
       <input class="upload-form-input-name" type='text' placeholder='name' name='name'>
     </div>
@@ -12,13 +12,13 @@
 </div>
 -->
 
-<div class="postForm">
+<div class="expenseForm">
     <div class="nav">
         {{>nav}}
     </div>
-    <form action="/posts" method="post" enctype="multipart/form-data">
-        <div class="content">
-            <figure>
+    <form action="/expenses" method="expense" enctype="multipart/form-data">
+        <!-- <div class="content">
+             <figure>
                 <img src="/assets/blankUser.png">
                 <figcaption>
                     Upload a Photo
@@ -26,20 +26,13 @@
             </figure>
             <input type="file" name="image" id="image-input" type='file' placeholder='image'>
             <input type="text" name="content" value="">
-        </div>
+        </div> -->
+        <input type="text" name="amount" value="" placeholder="Amount">
+        <input type="text" name="category" value="" placeholder="Category">
         <div class="description">
-            <textarea name="description" rows="20" cols="100"></textarea>
+            <textarea name="description" rows="4" cols="50" placeholder="What is this expense for?"></textarea>
         </div>
-        <div id=topicSelection>
-            <div id="intrests">
-                <input type="checkbox" name="intrests" value="Sports">Sports<br>
-                <input type="checkbox" name="intrests" value="tech">tech<br>
-                <input type="checkbox" name="intrests"  value="Tapioka">Tapioka<br>
-            </div>
-            <button type="submit" name="post">Submit</button>
-        </div>
+        <button type="submit" name="expense">Submit</button>
     </form>
-    <div class="friends">
-
-    </div>
 </div>
+<!-- restyle -->

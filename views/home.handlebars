@@ -1,20 +1,18 @@
         <div class="homeContainer">
             <div class="nav">{{>nav}}</div>
-            <div class="friends">
-                {{#each friend}}
-                {{/each}}
+            <!-- need total and budgeting -->
+            <div class="totals">
+                <!-- calculate total spent and spending per category -->
             </div>
-            <div class="feed">
-                {{#each post}}
-                {{> post}}
-                {{/each}}
+            <div class="budget">
+                <!-- save budget info and categorized -->
             </div>
-            <!-- <div class="other">
-                {{#each thing}}
-                {{/each}}
-            </div> -->
-            <div class="topics">
-                {{#each topic}}
+            <div class="addExpense">
+                {{> expense-form}}
+            </div>
+            <div class="expenses">
+                {{#each expense}}
+                {{> expense}}
                 {{/each}}
             </div>
         </div>

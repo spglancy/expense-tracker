@@ -1,0 +1,17 @@
+<div class="expense-container">
+    <a href="/">back</a>
+    <p class="expense-content">Amount: {{expense.value}}</p>
+
+    <p>Category: </p>
+
+    <p class="expense-description">For: {{expense.description}}</p>
+
+    <img src="{{expense.imageRoute}}">
+
+    <p><form method="expense" action="/expenses/{{expense._id}}?_method=DELETE">
+    <button class="btn btn-primary" type="submit">Delete</button>
+    </form>
+
+    </p>
+</div>
+<!-- restyle -->

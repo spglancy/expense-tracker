@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 
-const post = mongoose.model('post', {
+const expense = mongoose.model('expense', {
     user: String,
     description: String,
-    content: String,
+    value: String,
     imageRoute: String,
-    intrests:Array
+    category: String
 });
 
-module.exports = post;
+module.exports = expense;

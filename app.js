@@ -8,7 +8,7 @@ const authController = require('./controllers/authController');
 const mongoose = require('mongoose');
 const config = require('./config.js');
 const fileUpload = require('express-fileupload');
-const postController = require('./controllers/postController');
+const expenseController = require('./controllers/expenseController');
 var cookieParser = require('cookie-parser');
 
 app.use(express.static(__dirname + '/public'));
@@ -32,7 +32,7 @@ app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 app.use(fileUpload());
 
-app.use('/', postController);
+app.use('/', expenseController);
 app.use('/api/auth', authController);
 
 
