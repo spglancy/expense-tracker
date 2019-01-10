@@ -23,7 +23,7 @@ expenseRoutes.get('/expense-new', (req,res) => {
     res.render('new-expense');
 })
 
-expenseRoutes.post('/home/:id', (req, res) => {
+expenseRoutes.post('/home', (req, res) => {
     Expense.create(req.body).then((expense) => {
         console.log(expense);
         res.render('home', {
