@@ -5,6 +5,10 @@ const User = require('../models/user.js');
 const shortid = require('short-id');
 
 expenseRoutes.get('/', (req,res) => {
+    const currentUser = req.user;
+    if(currentUser){
+        res.redirect(`/home/${req.user._id}`)
+    }
     res.redirect('/api/auth/signup')
 })
 
@@ -23,7 +27,7 @@ expenseRoutes.get('/expense-new', (req,res) => {
     res.render('new-expense');
 })
 
-expenseRoutes.post('/home', (req, res) => {
+expenseRoutes.post('/home/:id', (req, res) => {
     Expense.create(req.body).then((expense) => {
         console.log(expense);
         res.render('home', {
