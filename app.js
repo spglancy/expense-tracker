@@ -10,10 +10,25 @@ const config = require('./config.js');
 const fileUpload = require('express-fileupload');
 const expenseController = require('./controllers/expenseController');
 var cookieParser = require('cookie-parser');
+const jwt = require('jsonwebtoken');
 
 app.use(express.static(__dirname + '/public'));
 app.use(express.static('uploads'));
 app.use(cookieParser());
+
+var checkAuth = (req, res, next) => {
+  console.log("Checking authentication");
+  if (typeof req.cookies.nToken === "undefined" || req.cookies.nToken === null) {
+    req.user = null;
+  } else {
+    var token = req.cookies.nToken;
+    var decodedToken = jwt.decode(token, { complete: true }) || {};
+    req.user = decodedToken.payload;
+  }
+
+  next();
+};
+app.use(checkAuth);
 
 mongoose.connect( config.mongoURL, { useNewUrlParser: true })
 .catch(err =>{

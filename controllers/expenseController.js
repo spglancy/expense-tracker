@@ -13,18 +13,16 @@ expenseRoutes.get('/', (req,res) => {
 })
 
 expenseRoutes.get('/home/:id', (req, res) => {
+    const currentUser = req.user;
     Expense.find().then((expense) => {
         res.render('home', {
-            expense: expense
+            expense: expense,
+            user: req.user
         });
     })
         .catch((err) => {
         console.log(err);
     })
-})
-
-expenseRoutes.get('/expense-new', (req,res) => {
-    res.render('new-expense');
 })
 
 expenseRoutes.post('/home/:id', (req, res) => {
@@ -36,12 +34,12 @@ expenseRoutes.post('/home/:id', (req, res) => {
     })
 })
 
-expenseRoutes.delete('/expenses/:id', (req, res) => {
+expenseRoutes.delete('/home/:id/:id', (req, res) => {
     console.log(`delete ${req.params.id} `)
     Expense.findByIdAndRemove(req.params.id).then((expense) => {
-        res.redirect('/home/:id');
+        res.redirect(`/home/`);
     }).catch((err) => {
-        console.log(er.message);
+        console.log(err.message);
     })
 })
 

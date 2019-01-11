@@ -5,7 +5,8 @@ const expense = mongoose.model('expense', {
     description: String,
     value: String,
     imageRoute: String,
-    category: String
+    category: String,
+    userId: String
 });
 
 module.exports = expense;
