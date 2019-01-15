@@ -13,7 +13,6 @@ expenseRoutes.get('/', (req,res) => {
 })
 
 expenseRoutes.get('/home/:id', (req, res) => {
-    const currentUser = req.user;
     Expense.find().then((expense) => {
         res.render('home', {
             expense: expense,
@@ -25,19 +24,20 @@ expenseRoutes.get('/home/:id', (req, res) => {
     })
 })
 
-expenseRoutes.post('/home/:id', (req, res) => {
+expenseRoutes.post('/home/expenses', (req, res) => {
+    const currentUser = User.findOne(req.body.userId);
     Expense.create(req.body).then((expense) => {
+        currentUser.total += req.body.value;
+        console.log(currentUser.total)
         console.log(expense);
-        res.render('home', {
-            expense: expense
-        });
+        res.redirect(`/home/${req.body.userId}`)
     })
 })
 
-expenseRoutes.delete('/home/:id/:id', (req, res) => {
+expenseRoutes.delete('/home/expenses/:id', (req, res) => {
     console.log(`delete ${req.params.id} `)
     Expense.findByIdAndRemove(req.params.id).then((expense) => {
-        res.redirect(`/home/`);
+        res.redirect(`/home/${req.user._id}`);
     }).catch((err) => {
         console.log(err.message);
     })

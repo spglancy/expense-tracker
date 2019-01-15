@@ -7,7 +7,8 @@ const UserSchema = new Schema({
   updatedAt: { type: Date },
   password: { type: String, required: true },
   email: { type: String, required: true },
-  expenses: Array
+  expenses: Array,
+  total: String
 });
 
 // Must use function here! ES6 => functions do not bind this!
