@@ -37,7 +37,7 @@ expenseRoutes.post('/home/expenses', (req, res) => {
 expenseRoutes.delete('/home/expenses/:id', (req, res) => {
     console.log(`delete ${req.params.id} `)
     Expense.findByIdAndRemove(req.params.id).then((expense) => {
-        res.redirect(`/home/${req.user._id}`);
+        res.redirect(`/`);
     }).catch((err) => {
         console.log(err.message);
     })
